@@ -1,1 +1,395 @@
-xcode .
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>André Dev — Portfólio</title>
+  <meta name="description" content="Portfólio de André Dev — Redes, Computadores e Projetos" />
+
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#0b0f14;
+      --card:#0f1720;
+      --muted:#98a4b3;
+      --accent:#3aa0ff;
+      --glass: rgba(255,255,255,0.03);
+      --radius:14px;
+      --maxw:1120px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      background:linear-gradient(180deg,#050608 0%, #07101a 100%);
+      color:#e6eef6;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding:40px 20px;
+      display:flex;
+      justify-content:center;
+    }
+
+    .wrap{
+      width:100%;
+      max-width:var(--maxw);
+    }
+
+    /* ===== Header card (hero) ===== */
+    .hero{
+      background:linear-gradient(180deg, rgba(13,23,30,0.6), rgba(6,10,14,0.35)), url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+      border-radius:var(--radius);
+      overflow:hidden;
+      box-shadow: 0 10px 30px rgba(2,6,12,0.6);
+      position:relative;
+    }
+
+    .hero-inner{
+      display:grid;
+      grid-template-columns:120px 1fr;
+      gap:28px;
+      align-items:center;
+      padding:30px;
+      background:linear-gradient(180deg, rgba(6,12,18,0.2), rgba(6,12,18,0.2));
+    }
+
+    .avatar{
+      width:120px;height:120px;border-radius:50%;
+      border:4px solid rgba(255,255,255,0.08);
+      background:linear-gradient(180deg,#0b1220,#09121a);
+      display:flex;align-items:center;justify-content:center;overflow:hidden;
+      box-shadow:0 6px 20px rgba(0,0,0,0.6);
+    }
+    .avatar img{width:100%;height:100%;object-fit:cover;display:block}
+
+    .hero-title{
+      display:flex;flex-direction:column;gap:6px;
+    }
+    .hero-title h1{font-size:22px;margin:0 0 4px 0;font-weight:800}
+    .hero-title p{margin:0;color:var(--muted);font-size:14px}
+
+    .badge{display:inline-block;padding:6px 10px;border-radius:999px;background:linear-gradient(90deg,var(--accent),#6fb8ff);color:#001827;font-weight:700;font-size:12px}
+
+    .hero-meta{
+      display:flex;gap:20px;align-items:center;justify-content:flex-end;
+    }
+
+    .links{display:flex;gap:10px;align-items:center}
+    .icon-btn{
+      display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:9px;background:var(--glass);border:1px solid rgba(255,255,255,0.03);
+      text-decoration:none;color:var(--muted);font-size:14px
+    }
+
+    .hero-footer{border-top:1px solid rgba(255,255,255,0.03);padding:22px 30px;background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent)}
+    .skills{display:flex;gap:8px;flex-wrap:wrap}
+    .skill{font-size:12px;padding:6px 10px;border-radius:999px;background:rgba(58,160,255,0.08);color:var(--accent);border:1px solid rgba(58,160,255,0.08)}
+
+    /* ===== Main content ===== */
+    main{margin-top:28px}
+
+    .section-head{display:flex;align-items:center;gap:12px;margin:30px 0 18px 0}
+    .section-head h2{font-size:20px;margin:0}
+    .section-head .dot{width:14px;height:14px;border-radius:4px;background:var(--accent);display:inline-block}
+
+    .projects{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+    }
+
+    .card{
+      background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02));
+      border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,0.03);
+      box-shadow: 0 8px 24px rgba(2,6,12,0.6);
+    }
+
+    .card-hero{height:140px;background-size:cover;background-position:center}
+    .card-body{padding:16px}
+    .card-body h3{margin:0 0 8px 0;font-size:16px}
+    .card-body p{margin:0;color:var(--muted);font-size:13px;line-height:1.4}
+
+    .tag{display:inline-block;margin-top:12px;padding:6px 10px;background:rgba(58,160,255,0.08);color:var(--accent);border-radius:999px;font-size:12px}
+
+    /* ===== Layout tweaks ===== */
+    .row{display:flex;gap:18px;align-items:center}
+    .left{flex:1}
+    .right{display:flex;gap:12px;align-items:center}
+
+    /* ===== Tabs de anotações ===== */
+    .tabs {
+      display: flex;
+      flex-direction: column;
+      gap:12px;
+    }
+    .tab-labels {
+      display: flex;
+      gap:6px;
+      flex-wrap: wrap;
+    }
+    .tab-labels label {
+      padding:6px 12px;
+      background:rgba(58,160,255,0.1);
+      color:var(--accent);
+      border-radius:8px;
+      cursor:pointer;
+      font-size:13px;
+      user-select:none;
+    }
+    .tab-labels label:hover {
+      background:var(--accent);
+      color:#001827;
+    }
+    input[name="tab"] {
+      display:none;
+    }
+    .tab-content {
+      background:var(--card);
+      border-radius:12px;
+      padding:16px;
+      max-height:200px;
+      overflow-y:auto;
+      line-height:1.5;
+      color:#e6eef6;
+    }
+    input#tab1:checked ~ .tab-contents #content1,
+    input#tab2:checked ~ .tab-contents #content2,
+    input#tab3:checked ~ .tab-contents #content3,
+    input#tab4:checked ~ .tab-contents #content4,
+    input#tab5:checked ~ .tab-contents #content5,
+    input#tab6:checked ~ .tab-contents #content6,
+    input#tab7:checked ~ .tab-contents #content7,
+    input#tab8:checked ~ .tab-contents #content8,
+    input#tab9:checked ~ .tab-contents #content9,
+    input#tab10:checked ~ .tab-contents #content10 {
+      display:block;
+    }
+    .tab-contents > div {
+      display:none;
+    }
+    .tab-content::-webkit-scrollbar {
+      width:6px;
+    }
+    .tab-content::-webkit-scrollbar-thumb {
+      background-color: var(--accent);
+      border-radius:3px;
+    }
+    .tab-content::-webkit-scrollbar-track {
+      background: rgba(255,255,255,0.05);
+      border-radius:3px;
+    }
+
+    /* Responsivida aulade */
+    @media (max-width:1000px){
+      .projects{grid-template-columns:repeat(2,1fr)}
+    }
+    @media (max-width:640px){
+      body{padding:20px}
+      .hero-inner{grid-template-columns:92px 1fr;padding:20px}
+      .projects{grid-template-columns:1fr}
+      .wrap{padding:0}
+      .hero-title h1{font-size:18px}
+    }
+
+  </style>
+</head>
+<body>
+  <div class="wrap">
+
+    <!-- HERO / PROFILE CARD -->
+    <header class="hero">
+      <div class="hero-inner">
+        <div class="avatar">
+          <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=600&q=70" alt="André Dev avatar">
+        </div>
+
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:18px;width:100%">
+          <div class="hero-title">
+            <h1>André Dev</h1>
+            <p>Estuda aulante de Engenharia de Software · Cursando 4 período · Redes e Computadores</p>
+            <div style="margin-top:8px;display:flex;gap:10px;flex-wrap:wrap">
+              <span class="badge">Redes e Computadores</span>
+              <span class="badge" style="background:linear-gradient(90deg,#9be1ff,#3aa0ff);">Cybersegurança & Servidores</span>
+            </div>
+          </div>
+
+          <div class="hero-meta">
+            <div style="text-align:right">
+              <div style="color:var(--muted);font-size:13px">Conecte-se</div>
+              <div class="links" style="margin-top:8px">
+                <a class="icon-btn" href="https://github.com/andrebarros-hue" title="GitHub" target="_blank">GH</a>
+                <a class="icon-btn" href="https://www.linkedin.com/in/andr%C3%A9-barros-aa33a8382/" title="LinkedIn" target="_blank">in</a>
+                <a class="icon-btn" href="andre.lbarros@a.catolica-to.edu.br" title="Email">✉</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-footer">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap">
+          <div class="skills">
+            <span class="skill">TCP/IP</span>
+            <span class="skill">DHCP</span>
+            <span class="skill">Wi‑Fi</span>
+            <span class="skill">Ping</span>
+            <span class="skill">RedeConfig</span>
+            <span class="skill">Servidores</span>
+          </div>
+
+          <div style="color:var(--muted);font-size:13px">��� Palmas · Brasil</div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- projetos -->
+      <div class="section-head">
+        <span class="dot"></span>
+        <h2>Projetos</h2>
+      </div>
+
+      <div class="projects">
+        <article class="card">
+          <div class="card-hero" style="background-image:url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1400&q=80')"></div>
+          <div class="card-body">
+            <h3>Anotações de Redes 1 a 10</h3>
+            <p>redes e computadores envolvem o estudo dos princípios que permitem a integração e comunicação entre vários dispositivos.
+Os alunos aprendem como computadores processam dados, como funcionam as ligações de rede (LAN, WAN, Internet), e como essas conexões tornam possível a troca de informações.
+            </p>
+            <div class="tag">Documentação</div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-hero" style="background-image:url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1400&q=80')"></div>
+          <div class="card-body">
+            <h3>bits e bytes</h3>
+            <p>Bit é a abreviação de binary digit (dígito binário). Representa o menor elemento de informação possível, que pode ter apenas dois valores: 0 ou 1;
+              Um byte equivale a 8 bits agrupados. Ele é a menor unidade de armazenamento que pode representar um caractere, como uma letra, número ou símbolo. Cada byte pode formar até 256 combinações diferentes (de 00000000 até 11111111)
+            </p>
+            <div class="tag">Calculo</div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-hero" style="background-image:url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1400&q=80')"></div>
+          <div class="card-body">
+            <h3>Cybersecurity</h3>
+            <p>Cibersegurança é o conjunto de práticas e tecnologias voltadas à proteção de sistemas, redes, dispositivos e dados contra ataques, acessos não autorizados e danos digitais.</p>
+            <div class="tag">Web/Apps</div>
+          </div>
+        </article>
+      </div>
+
+      <!-- ===== Seção de 10 abas de anotações ===== -->
+      <div style="margin-top:34px">
+        <div class="section-head">
+          <span class="dot"></span>
+          <h2>Anotações de Redes</h2>
+        </div>
+
+        <div class="tabs">
+          <!-- Inputs escondidos -->
+          <input type="radio" name="tab" id="tab1" checked>
+          <input type="radio" name="tab" id="tab2">
+          <input type="radio" name="tab" id="tab3">
+          <input type="radio" name="tab" id="tab4">
+          <input type="radio" name="tab" id="tab5">
+          <input type="radio" name="tab" id="tab6">
+          <input type="radio" name="tab" id="tab7">
+          <input type="radio" name="tab" id="tab8">
+          <input type="radio" name="tab" id="tab9">
+          <input type="radio" name="tab" id="tab10">
+
+          <!-- Labels da aulas abas -->
+          <div class="tab-labels">
+            <label for="tab1">Resumo/Anotação 1 06/08/2025</label>
+            <label for="tab2">Resumo/Anotação 2 13/08/2025</label>
+            <label for="tab3">Resumo/Anotação 3 20/08/2025</label>
+            <label for="tab4">Resumo/Anotação 4 27/08/2025</label>
+            <label for="tab5">Resumo/Anotação 5 03/09/2025</label>
+            <label for="tab6">Resumo/Anotação 6 10/09/2025</label>
+            <label for="tab7">Resumo/Anotação 7 17/09/2025</label>
+            <label for="tab8">Resumo/Anotação 8 24/09/2025</label>
+            <label for="tab9">Resumo/Anotação 9 01/10/2025</label>
+          </div>
+
+          <!-- Conteúdos da aulas abas -->
+          <div class="tab-contents">
+            <div id="content1" class="tab-content">
+              <p>Conteúdo da aula Resumo/Anotação 1: Baseado na primeira aula e o conceito estuda aulado, Uma rede de computadores é o conjunto de máquinas interligada aulas para trocar informações.
+A internet é um exemplo de rede que conecta diversos dispositivos por meio de servidores.
+
+A comunicação entre eles segue protocolos, que definem as regras, formatos e ações para garantir que a informação enviada aula seja a mesma recebida aula.
+Os principais protocolos são IP, TCP e UDP.
+
+Os sistemas finais (hosts) podem atuar como:
+
+Cliente (client): solicita um serviço.
+
+Servidor (server): fornece o serviço.</p>
+            </div>
+            <div id="content2" class="tab-content">
+              <p>Conteúdo da aula Resumo/Anotação 2: A aula retomou o conceito de redes de computadores, que são sistemas de comunicação entre dispositivos capazes de processar e trocar da aulados.
+A IEEE define essas redes como conexões entre dispositivos independentes que se comunicam dentro de uma área geográfica limitada aula.
+
+Os meios de transmissão incluem Wi-Fi, da aulados móveis, modem sem fio e 4G.
+A questão discutida aula — "quem manda aula na internet?" — mostra que o controle é distribuído entre vários órgãos e sistemas, como DNS, IP e VPN, cada aula um com funções específicas dentro da aula infraestrutura da aula rede.</p>
+            </div>
+            <div id="content3" class="tab-content">
+              <p>Conteúdo da aula Resumo/Anotação 3: A aula revisou o conceito de redes de computadores, que conectam dispositivos para comunicar e trocar da aulados.
+Segundo a IEEE, essas redes operam dentro de uma área geográfica limitada aula com dispositivos independentes.
+Os principais meios de transmissão são Wi-Fi, da aulados móveis, modem sem fio e 4G.
+A pergunta “quem manda aula na internet?” mostra que não há um único responsável, mas sim vários órgãos e sistemas, como DNS, IP e VPN, que organizam e identificam a estrutura da aula internet</p>
+            </div>
+            <div id="content4" class="tab-content">
+              <p>Conteúdo da aula Resumo/Anotação 4: A aula do dia 27 de agosto focou em uma ativida aulade prática usando comandos do CMD para analisar informações da aula internet, modem e conexão de rede.
+Os principais comandos foram ipconfig, que exibe da aulados da aula rede Wi-Fi, e ping, que mede o tempo de resposta (ms) e o carregamento de da aulados de um site.
+Quem não havia feito a ativida aulade anterior precisou concluí-la, enquanto os demais revisaram o conteúdo.
+O aprendizado envolveu o uso de comandos ligados ao TCP/IP e sua aplicação na prática.</p>
+            </div>
+            <div id="content5" class="tab-content">
+              <p>Conteúdo da aula Resumo/Anotação 5: A aula começou com a correção das atividades anteriores e a introdução do tema interconexão, essencial para automatizar processos em redes LAN.
+Foram explicados:
+Repetidores, que amplificam sinais e distribuem dados entre segmentos da rede.
+Pontes (bridges), que operam na camada de enlace, realizando chaveamento seguro e armazenando dados em tabelas internas, diferindo dos hubs.
+Também foi abordado o Endereço IP, dividido em rede e host, com as versões IPv4 e IPv6.
+Ao final, foi solicitada uma atividade prática no Packet Tracer, ferramenta de simulação da Cisco.</p>
+            </div>
+            <div id="content6" class="tab-content">
+              <p>Conteúdo da aula Resumo/Anotação 6: A aula foi dedicada à demonstração do uso do Packet Tracer, ferramenta de simulação de redes e dispositivos.
+Após a explicação, os alunos realizaram uma simulação prática criando um ambiente com dois switches interconectados, cada um com oito computadores.
+O principal aprendizado foi compreender que, em uma rede interconectada, existem vários dispositivos, e cada um exerce uma função específica.</p>
+            </div>
+            <div id="content7" class="tab-content">
+              <p>Conteúdo da aula Resumo/Anotação 7: Na aula de hoje, o foco foi concluir a atividade prática em grupo com Packet Tracer, junto com Mário Henrique e João Pedro Cruz.
+Montaram o ambiente conforme solicitado, conectando switches, PCs e redes, e ajustando as funções dos repetidores, PCs e rede.
+Após finalizarem e postarem a atividade, a aula foi encerrada sem outros conteúdos.</p>
+            </div>
+            <div id="content8" class="tab-content">
+              <p>Conteúdo da aula Resumo/Anotação 8: Neste dia fomos designado apenas a estudar em casa, pois não teve aula, ja que não teve, fomos estudar mais sobre o packet tracer que é uma plataforma facil de entendimento
+                e compreendimento do assunto redes e internets.
+              </p>
+            </div>
+            <div id="content9" class="tab-content">
+              <p>Conteúdo da aula Resumo/Anotação 9: neste dia fomos apresentados ao Bits que são a base da informação digital, representando 0 ou 1.
+O agrupamento de bits forma bytes (8 bits = 1 byte), usados para medir armazenamento e transmissão.
+Em redes, velocidades são medidas em bits por segundo (bps).
+Para converter bits em bytes, divida por 8 (ex: 800 bits = 100 bytes).
+Mais bits permitem mais combinações de dados.
+Para deixar claro, entender bits é essencial para compreender capacidade e velocidade de redes e dispositivos.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- seção de recursos -->
+      <div style="margin-top:34px">
+        <div class="section-head">
+          <span class="dot"></span>
+          <
+
